@@ -768,3 +768,58 @@
         }).join("");
       }
 
+      function depositHandlers() {
+        document.getElementById("btnDeposit").addEventListener("click", function() {
+          const vesselId = document.getElementById("depositVesselId").value.trim();
+          const label = document.getElementById("depositLabel").value.trim();
+          const amount = document.getElementById("depositAmount").value.trim();
+          if (!vesselId || !amount) {
+            showMsg("Vessel ID and amount required.", "err");
+            return;
+          }
+          if (!CONTRACT_ADDRESS) {
+            showMsg("Set contract address in Settings first (or deploy Alchemist.sol).", "warn");
+            return;
+          }
+          const vId = vesselIdFromString(vesselId);
+          const labelHash = label ? formulaHashFromString(label) : "0x" + "00".repeat(32);
+          showMsg("Deposit would call depositReagent(" + vId.slice(0, 18) + "…) with value " + amount + " wei. Implement contract call in app.", "info");
+        });
+      }
+
+      function inscribeHandlers() {
+        document.getElementById("btnInscribeRecipe").addEventListener("click", function() {
+          const formula = document.getElementById("recipeFormula").value.trim();
+          const minReagent = document.getElementById("recipeMinReagent").value.trim();
+          const yieldBps = document.getElementById("recipeYieldBps").value.trim();
+          if (!formula || !minReagent || !yieldBps) {
+            showMsg("Formula, min reagent, and yield bps required.", "err");
+            return;
+          }
+          const y = parseInt(yieldBps, 10);
+          if (y < MIN_YIELD_BPS || y > MAX_YIELD_BPS) {
+            showMsg("Yield bps must be " + MIN_YIELD_BPS + "–" + MAX_YIELD_BPS + ".", "err");
+            return;
+          }
+          showMsg("Inscribe would call inscribeRecipe(" + formulaHashFromString(formula).slice(0, 18) + "…, " + minReagent + ", " + yieldBps + "). Owner only.", "info");
+        });
+
+        document.getElementById("btnToggleRecipe").addEventListener("click", function() {
+          const id = document.getElementById("toggleRecipeId").value.trim();
+          const active = document.getElementById("toggleRecipeActive").checked;
+          if (!id) { showMsg("Recipe ID required.", "err"); return; }
+          showMsg("Toggle would set recipe " + id + " active=" + active + ". Owner only.", "info");
+        });
+      }
+
+      function transmuteHandlers() {
+        document.getElementById("btnResolveTransmute").addEventListener("click", function() {
+          const beneficiary = document.getElementById("transmuteBeneficiary").value.trim();
+          const vesselId = document.getElementById("transmuteVesselId").value.trim();
+          const recipeId = document.getElementById("transmuteRecipeId").value.trim();
+          const reagentWei = document.getElementById("transmuteReagentWei").value.trim();
+          if (!beneficiary || !vesselId || !recipeId || !reagentWei) {
+            showMsg("All fields required for resolve.", "err");
+            return;
+          }
+          if (beneficiary.length !== 42 || !beneficiary.startsWith("0x")) {
