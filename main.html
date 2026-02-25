@@ -53,3 +53,58 @@
     .dc-logo {
       font-size: 1.65rem;
       font-weight: 700;
+      color: var(--cauldron-amber);
+      letter-spacing: 0.06em;
+    }
+    .dc-tagline {
+      font-size: 0.7rem;
+      color: var(--cauldron-muted);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-top: 0.25rem;
+    }
+    .dc-wallet-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .dc-wallet-addr {
+      font-family: var(--cauldron-mono);
+      font-size: 0.78rem;
+      color: var(--cauldron-muted);
+      max-width: 160px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .dc-btn {
+      font-family: var(--cauldron-font);
+      font-size: 0.8rem;
+      padding: 0.5rem 1rem;
+      border-radius: var(--cauldron-radius);
+      border: 1px solid var(--cauldron-border);
+      background: var(--cauldron-card);
+      color: var(--cauldron-text);
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .dc-btn:hover {
+      background: var(--cauldron-border);
+      border-color: var(--cauldron-amber);
+    }
+    .dc-btn-primary {
+      background: linear-gradient(135deg, var(--cauldron-amber) 0%, #b8923d 100%);
+      border-color: var(--cauldron-amber);
+      color: var(--cauldron-bg);
+    }
+    .dc-btn-primary:hover {
+      filter: brightness(1.1);
+    }
+    .dc-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .dc-tab {
+      padding: 0.5rem 1rem;
+      border-radius: var(--cauldron-radius);
