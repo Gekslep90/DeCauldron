@@ -493,3 +493,58 @@
         <h3>Resolve transmutation (keeper only)</h3>
         <div class="dc-label">Beneficiary address</div>
         <input type="text" class="dc-input" id="transmuteBeneficiary" placeholder="0x..." />
+        <div class="dc-label">Vessel ID</div>
+        <input type="text" class="dc-input" id="transmuteVesselId" placeholder="vessel_alpha" />
+        <div class="dc-label">Recipe ID</div>
+        <input type="text" class="dc-input" id="transmuteRecipeId" placeholder="1" />
+        <div class="dc-label">Reagent amount (wei)</div>
+        <input type="text" class="dc-input" id="transmuteReagentWei" placeholder="500000" />
+        <button type="button" class="dc-btn dc-btn-primary" id="btnResolveTransmute">Resolve</button>
+      </div>
+    </div>
+
+    <div class="dc-panel" id="panel-calculator">
+      <div class="dc-card">
+        <h3>Yield &amp; fee calculator</h3>
+        <p class="dc-help-text">Compute yield (reagent × yieldBps / 10000) and fee (yield × feeBps / 10000). Net = yield − fee.</p>
+        <div class="dc-calc-row">
+          <div style="flex:1; min-width:140px;">
+            <div class="dc-label">Reagent (wei)</div>
+            <input type="text" class="dc-input" id="calcReagent" value="1000000" placeholder="1000000" />
+          </div>
+          <div style="flex:1; min-width:100px;">
+            <div class="dc-label">Yield bps (5000–10000)</div>
+            <input type="text" class="dc-input" id="calcYieldBps" value="8000" placeholder="8000" />
+          </div>
+          <div style="flex:1; min-width:80px;">
+            <div class="dc-label">Fee bps (0–250)</div>
+            <input type="text" class="dc-input" id="calcFeeBps" value="8" placeholder="8" />
+          </div>
+          <button type="button" class="dc-btn dc-btn-primary" id="btnCalc">Calculate</button>
+        </div>
+        <div class="dc-calc-result" id="calcResult">—</div>
+      </div>
+    </div>
+
+    <div class="dc-panel" id="panel-constants">
+      <div class="dc-card">
+        <h3>Contract constants</h3>
+        <ul class="dc-constants-list" id="dcConstantsList">
+          <li><span>ALCH_BPS_BASE</span><span>10000</span></li>
+          <li><span>ALCH_MAX_FEE_BPS</span><span>250</span></li>
+          <li><span>ALCH_MAX_RECIPES</span><span>72</span></li>
+          <li><span>ALCH_MAX_BATCH_INSCRIBE</span><span>12</span></li>
+          <li><span>ALCH_MIN_YIELD_BPS</span><span>5000</span></li>
+          <li><span>ALCH_MAX_YIELD_BPS</span><span>10000</span></li>
+          <li><span>ALCH_RECIPE_SALT</span><span>0x5C9f2E8a4D1b7F0e3A6c9B2d5E8f1A4c7D0e3B6</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="dc-panel" id="panel-events">
+      <div class="dc-card">
+        <h3>Recent events (mock)</h3>
+        <p class="dc-help-text">Sample event log; replace with real contract events when connected.</p>
+        <div class="dc-event-log" id="dcEventLog"></div>
+        <button type="button" class="dc-btn" id="btnRefreshEvents" style="margin-top:0.5rem;">Refresh mock events</button>
+      </div>
