@@ -438,3 +438,58 @@
       </div>
       <div class="dc-card">
         <h3>Vessel IDs (sample)</h3>
+        <ul class="dc-list" id="dcVesselIdsList"></ul>
+      </div>
+    </div>
+
+    <div class="dc-panel" id="panel-recipes">
+      <div class="dc-card">
+        <h3>Inscribe recipe</h3>
+        <div class="dc-label">Formula (string; will be hashed)</div>
+        <input type="text" class="dc-input" id="recipeFormula" placeholder="e.g. lead_to_gold" />
+        <div class="dc-label">Min reagent (wei)</div>
+        <input type="text" class="dc-input" id="recipeMinReagent" placeholder="1000000" />
+        <div class="dc-label">Yield (bps, 5000–10000)</div>
+        <input type="text" class="dc-input" id="recipeYieldBps" placeholder="8000" />
+        <button type="button" class="dc-btn dc-btn-primary" id="btnInscribeRecipe">Inscribe recipe</button>
+      </div>
+      <div class="dc-card">
+        <h3>Toggle recipe</h3>
+        <div class="dc-label">Recipe ID</div>
+        <input type="text" class="dc-input" id="toggleRecipeId" placeholder="1" />
+        <label style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.75rem;">
+          <input type="checkbox" id="toggleRecipeActive" checked />
+          <span class="dc-label" style="margin:0">Active</span>
+        </label>
+        <button type="button" class="dc-btn" id="btnToggleRecipe">Toggle recipe</button>
+      </div>
+    </div>
+
+    <div class="dc-panel" id="panel-vessels">
+      <div class="dc-card">
+        <h3>Vessel lookup</h3>
+        <div class="dc-label">Vessel ID (name or bytes32 hex)</div>
+        <input type="text" class="dc-input" id="vesselLookupId" placeholder="vessel_alpha or 0x..." />
+        <button type="button" class="dc-btn" id="btnLookupVessel">Look up</button>
+        <div id="vesselLookupResult" style="margin-top:0.75rem; font-family:var(--cauldron-mono); font-size:0.8rem;"></div>
+      </div>
+    </div>
+
+    <div class="dc-panel" id="panel-deposit">
+      <div class="dc-card">
+        <h3>Deposit reagent</h3>
+        <div class="dc-label">Vessel ID (name or bytes32 hex)</div>
+        <input type="text" class="dc-input" id="depositVesselId" placeholder="my_vessel" />
+        <div class="dc-label">Label (optional string, hashed)</div>
+        <input type="text" class="dc-input" id="depositLabel" placeholder="optional label" />
+        <div class="dc-label">Amount (wei)</div>
+        <input type="text" class="dc-input" id="depositAmount" placeholder="1000000000000000000" />
+        <button type="button" class="dc-btn dc-btn-primary" id="btnDeposit">Deposit</button>
+      </div>
+    </div>
+
+    <div class="dc-panel" id="panel-transmute">
+      <div class="dc-card">
+        <h3>Resolve transmutation (keeper only)</h3>
+        <div class="dc-label">Beneficiary address</div>
+        <input type="text" class="dc-input" id="transmuteBeneficiary" placeholder="0x..." />
