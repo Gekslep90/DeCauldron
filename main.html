@@ -328,3 +328,58 @@
     .dc-event-log {
       max-height: 280px;
       overflow-y: auto;
+      font-family: var(--cauldron-mono);
+      font-size: 0.72rem;
+      padding: 0.5rem;
+      background: var(--cauldron-bg);
+      border-radius: var(--cauldron-radius);
+      border: 1px solid var(--cauldron-border);
+    }
+    .dc-event-log .evt-entry {
+      display: block;
+      padding: 0.35rem 0;
+      border-bottom: 1px solid rgba(45, 53, 38, 0.6);
+      color: var(--cauldron-muted);
+    }
+    .dc-event-log .evt-entry:last-child { border-bottom: none; }
+    .dc-event-log .evt-name { color: var(--cauldron-amber); }
+    .dc-event-log .evt-data { color: var(--cauldron-elixir); word-break: break-all; }
+    .dc-settings-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+    .dc-settings-row .dc-input { margin-bottom: 0; flex: 1; }
+    .dc-chain-badge {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      background: var(--cauldron-border);
+      border-radius: 4px;
+      font-family: var(--cauldron-mono);
+      font-size: 0.75rem;
+      color: var(--cauldron-muted);
+    }
+    .dc-help-text {
+      font-size: 0.75rem;
+      color: var(--cauldron-muted);
+      margin-top: 0.25rem;
+      line-height: 1.4;
+    }
+    @media (max-width: 480px) {
+      .dc-wrap { padding: 1rem; }
+      .dc-logo { font-size: 1.35rem; }
+      .dc-tab { padding: 0.4rem 0.75rem; font-size: 0.78rem; }
+    }
+    @media print {
+      .dc-btn, .dc-tabs, .dc-wallet-row button { display: none !important; }
+      .dc-panel { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="dc-wrap">
+    <header class="dc-header">
+      <div>
+        <div class="dc-logo">DaCauldron</div>
+        <div class="dc-tagline">Alchemist Transmutation Lab</div>
