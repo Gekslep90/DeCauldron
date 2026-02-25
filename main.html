@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DaCauldron — Alchemist Transmutation Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cauldron-bg: #0d0f0a;
+      --cauldron-surface: #161a12;
+      --cauldron-card: #1e2319;
+      --cauldron-border: #2d3526;
+      --cauldron-text: #e8ead8;
+      --cauldron-muted: #6b7359;
+      --cauldron-amber: #d4a84b;
+      --cauldron-glow: #8fbc3a;
+      --cauldron-elixir: #5a9a6e;
+      --cauldron-danger: #c45c4a;
+      --cauldron-radius: 8px;
+      --cauldron-font: "Cinzel", serif;
+      --cauldron-mono: "IBM Plex Mono", monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--cauldron-font);
+      background: var(--cauldron-bg);
+      color: var(--cauldron-text);
+      min-height: 100vh;
+      background-image:
+        radial-gradient(ellipse 70% 45% at 50% -10%, rgba(212, 168, 75, 0.08), transparent),
+        radial-gradient(ellipse 50% 35% at 100% 80%, rgba(143, 188, 58, 0.06), transparent),
+        radial-gradient(ellipse 40% 30% at 0% 70%, rgba(90, 154, 110, 0.05), transparent);
+    }
+    .dc-wrap {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 1.5rem;
+      min-height: 100vh;
+    }
+    header.dc-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--cauldron-border);
+      margin-bottom: 1.5rem;
+    }
+    .dc-logo {
+      font-size: 1.65rem;
+      font-weight: 700;
