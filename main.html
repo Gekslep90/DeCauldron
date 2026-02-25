@@ -603,3 +603,58 @@
       let CONTRACT_ADDRESS = "";
       const CRUCIBLE = "0xE8f2A4C6b1D9e3F7a0B5c8E2d4F6A9b1C3e5D7";
       const TREASURY = "0x9C1e5F3a7B0d2E6f8A4c1B7e9D3F5a0C2E6b8";
+      const LAB_KEEPER = "0x4F7b2D9e1A6c0E3f8B5d2A9c7E1F4b0D6e3A8";
+      const BPS_BASE = 10000;
+      const MAX_FEE_BPS = 250;
+      const MIN_YIELD_BPS = 5000;
+      const MAX_YIELD_BPS = 10000;
+
+      function showMsg(text, type) {
+        const el = document.getElementById("dcMsg");
+        el.textContent = text;
+        el.className = "dc-msg " + (type || "info");
+        el.style.display = "block";
+        setTimeout(function() { el.style.display = "none"; }, 6000);
+      }
+
+      function loadSettings() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (raw) {
+            const o = JSON.parse(raw);
+            if (o.contractAddress) {
+              CONTRACT_ADDRESS = o.contractAddress;
+              const inp = document.getElementById("settingsContractAddr");
+              if (inp) inp.value = CONTRACT_ADDRESS;
+            }
+          }
+        } catch (e) {}
+      }
+
+      function saveSettings() {
+        const inp = document.getElementById("settingsContractAddr");
+        if (inp) {
+          CONTRACT_ADDRESS = inp.value.trim();
+          try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify({ contractAddress: CONTRACT_ADDRESS }));
+            showMsg("Settings saved.", "info");
+          } catch (e) {
+            showMsg("Could not save settings.", "err");
+          }
+        }
+      }
+
+      function tabs() {
+        document.querySelectorAll(".dc-tab").forEach(function(tab) {
+          tab.addEventListener("click", function() {
+            const panelId = "panel-" + tab.getAttribute("data-panel");
+            document.querySelectorAll(".dc-tab").forEach(function(t) { t.classList.remove("active"); });
+            document.querySelectorAll(".dc-panel").forEach(function(p) { p.classList.remove("active"); });
+            tab.classList.add("active");
+            const panel = document.getElementById(panelId);
+            if (panel) panel.classList.add("active");
+          });
+        });
+      }
+
+      function connectBtn() {
