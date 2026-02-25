@@ -108,3 +108,58 @@
     .dc-tab {
       padding: 0.5rem 1rem;
       border-radius: var(--cauldron-radius);
+      border: 1px solid var(--cauldron-border);
+      background: transparent;
+      color: var(--cauldron-muted);
+      cursor: pointer;
+      font-family: var(--cauldron-font);
+      font-size: 0.85rem;
+    }
+    .dc-tab:hover { color: var(--cauldron-text); border-color: var(--cauldron-amber); }
+    .dc-tab.active {
+      background: var(--cauldron-card);
+      color: var(--cauldron-amber);
+      border-color: var(--cauldron-amber);
+    }
+    .dc-panel {
+      display: none;
+      padding: 1.25rem;
+      border: 1px solid var(--cauldron-border);
+      border-radius: var(--cauldron-radius);
+      background: var(--cauldron-surface);
+    }
+    .dc-panel.active { display: block; }
+    .dc-card {
+      background: var(--cauldron-card);
+      border: 1px solid var(--cauldron-border);
+      border-radius: var(--cauldron-radius);
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    .dc-card h3 {
+      font-size: 0.95rem;
+      color: var(--cauldron-amber);
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.04em;
+    }
+    .dc-label {
+      font-size: 0.72rem;
+      color: var(--cauldron-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.35rem;
+    }
+    .dc-input {
+      width: 100%;
+      font-family: var(--cauldron-mono);
+      font-size: 0.85rem;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid var(--cauldron-border);
+      border-radius: var(--cauldron-radius);
+      background: var(--cauldron-bg);
+      color: var(--cauldron-text);
+      margin-bottom: 0.75rem;
+    }
+    .dc-input:focus {
+      outline: none;
+      border-color: var(--cauldron-amber);
