@@ -273,3 +273,58 @@
       font-weight: 500;
     }
     .dc-table tr:hover td { background: rgba(45, 53, 38, 0.4); }
+    .dc-tooltip {
+      position: relative;
+    }
+    .dc-tooltip:hover::after {
+      content: attr(data-tip);
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 0.35rem 0.6rem;
+      background: var(--cauldron-card);
+      border: 1px solid var(--cauldron-border);
+      border-radius: 4px;
+      font-size: 0.7rem;
+      white-space: nowrap;
+      z-index: 10;
+      margin-bottom: 0.35rem;
+    }
+    .dc-anim-fade { animation: dcFade 0.3s ease; }
+    @keyframes dcFade {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .dc-calc-row {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      margin-bottom: 0.75rem;
+    }
+    .dc-calc-row .dc-input { margin-bottom: 0; flex: 1; min-width: 120px; }
+    .dc-calc-result {
+      font-family: var(--cauldron-mono);
+      font-size: 1rem;
+      color: var(--cauldron-glow);
+      padding: 0.75rem;
+      background: var(--cauldron-bg);
+      border-radius: var(--cauldron-radius);
+      margin-top: 0.5rem;
+    }
+    .dc-constants-list {
+      list-style: none;
+    }
+    .dc-constants-list li {
+      padding: 0.4rem 0;
+      border-bottom: 1px solid var(--cauldron-border);
+      font-family: var(--cauldron-mono);
+      font-size: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .dc-event-log {
+      max-height: 280px;
+      overflow-y: auto;
