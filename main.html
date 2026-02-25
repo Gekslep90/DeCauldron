@@ -383,3 +383,58 @@
       <div>
         <div class="dc-logo">DaCauldron</div>
         <div class="dc-tagline">Alchemist Transmutation Lab</div>
+      </div>
+      <div class="dc-wallet-row">
+        <span class="dc-wallet-addr" id="dcWalletAddr">Not connected</span>
+        <button type="button" class="dc-btn dc-btn-primary" id="dcConnectBtn">Connect</button>
+      </div>
+    </header>
+
+    <div class="dc-hero">
+      <div class="dc-cauldron-icon"></div>
+      <h1>Transmutation Lab</h1>
+      <p>Deposit reagents into vessels, inscribe recipes, and resolve transmutations. Yield flows to beneficiaries; fees to the treasury.</p>
+    </div>
+
+    <div class="dc-tabs">
+      <button type="button" class="dc-tab active" data-panel="dashboard">Dashboard</button>
+      <button type="button" class="dc-tab" data-panel="recipes">Recipes</button>
+      <button type="button" class="dc-tab" data-panel="vessels">Vessels</button>
+      <button type="button" class="dc-tab" data-panel="deposit">Deposit Reagent</button>
+      <button type="button" class="dc-tab" data-panel="transmute">Resolve Transmutation</button>
+      <button type="button" class="dc-tab" data-panel="calculator">Calculator</button>
+      <button type="button" class="dc-tab" data-panel="constants">Constants</button>
+      <button type="button" class="dc-tab" data-panel="events">Event log</button>
+      <button type="button" class="dc-tab" data-panel="settings">Settings</button>
+      <button type="button" class="dc-tab" data-panel="about">About</button>
+    </div>
+
+    <div id="dcMsg" class="dc-msg info" style="display:none;"></div>
+
+    <div class="dc-panel active" id="panel-dashboard">
+      <div class="dc-grid-2">
+        <div class="dc-card">
+          <h3>Lab status</h3>
+          <div class="dc-stat">
+            <div class="dc-stat-value" id="dcLabPaused">—</div>
+            <div class="dc-stat-label">Paused</div>
+          </div>
+          <div class="dc-stat">
+            <div class="dc-stat-value" id="dcFeeBps">—</div>
+            <div class="dc-stat-label">Fee (bps)</div>
+          </div>
+        </div>
+        <div class="dc-card">
+          <h3>Addresses</h3>
+          <div class="dc-label">Crucible</div>
+          <div class="dc-stat-value" style="font-size:0.8rem; word-break:break-all;" id="dcCrucible">—</div>
+          <div class="dc-label" style="margin-top:0.5rem">Treasury</div>
+          <div class="dc-stat-value" style="font-size:0.8rem; word-break:break-all;" id="dcTreasury">—</div>
+        </div>
+      </div>
+      <div class="dc-card">
+        <h3>Recipe IDs</h3>
+        <ul class="dc-list" id="dcRecipeIdsList"></ul>
+      </div>
+      <div class="dc-card">
+        <h3>Vessel IDs (sample)</h3>
