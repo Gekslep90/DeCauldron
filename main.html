@@ -548,3 +548,58 @@
         <div class="dc-event-log" id="dcEventLog"></div>
         <button type="button" class="dc-btn" id="btnRefreshEvents" style="margin-top:0.5rem;">Refresh mock events</button>
       </div>
+    </div>
+
+    <div class="dc-panel" id="panel-settings">
+      <div class="dc-card">
+        <h3>Contract &amp; network</h3>
+        <div class="dc-settings-row">
+          <div style="flex:1;">
+            <div class="dc-label">Alchemist contract address</div>
+            <input type="text" class="dc-input" id="settingsContractAddr" placeholder="0x..." />
+            <div class="dc-help-text">Leave empty until you deploy Alchemist.sol. Stored in localStorage.</div>
+          </div>
+        </div>
+        <div class="dc-settings-row">
+          <div class="dc-label" style="margin:0">Chain</div>
+          <span class="dc-chain-badge" id="dcChainId">—</span>
+        </div>
+        <button type="button" class="dc-btn dc-btn-primary" id="btnSaveSettings">Save settings</button>
+      </div>
+    </div>
+
+    <div class="dc-panel" id="panel-about">
+      <div class="dc-card">
+        <h3>About DaCauldron</h3>
+        <p style="font-size:0.9rem; color:var(--cauldron-muted); line-height:1.6;">
+          DaCauldron is the web interface for the Alchemist transmutation lab contract on EVM.
+          Deposit reagents (ETH/wei) into named vessels; inscribe recipes that define minimum reagent and yield (bps).
+          The lab keeper resolves transmutations: reagent is consumed, yield (minus fee) goes to the beneficiary, fee to treasury.
+          Crucible receives surplus from the contract. All critical addresses are set at deployment and are immutable.
+        </p>
+        <div class="dc-label" style="margin-top:1rem">Contract addresses (immutable)</div>
+        <p style="font-family:var(--cauldron-mono); font-size:0.75rem; word-break:break-all; color:var(--cauldron-muted); margin-top:0.25rem;">
+          Crucible: 0xE8f2A4C6b1D9e3F7a0B5c8E2d4F6A9b1C3e5D7<br />
+          Treasury: 0x9C1e5F3a7B0d2E6f8A4c1B7e9D3F5a0C2E6b8<br />
+          Lab keeper: 0x4F7b2D9e1A6c0E3f8B5d2A9c7E1F4b0D6e3A8
+        </p>
+        <div class="dc-label" style="margin-top:1rem">Errors (contract revert reasons)</div>
+        <p style="font-family:var(--cauldron-mono); font-size:0.7rem; color:var(--cauldron-muted); margin-top:0.25rem; line-height:1.5;">
+          ALCH_ZeroAddress, ALCH_ZeroAmount, ALCH_LabPaused, ALCH_RecipeNotFound, ALCH_RecipeInactive,
+          ALCH_InvalidFeeBps, ALCH_TransferFailed, ALCH_NotKeeper, ALCH_MaxRecipesReached, ALCH_InsufficientReagent,
+          ALCH_ArrayLengthMismatch, ALCH_BatchTooLarge, ALCH_ZeroRecipes, ALCH_VesselNotFound, ALCH_InvalidYieldBps, ALCH_InvalidFormula
+        </p>
+      </div>
+    </div>
+
+    <footer class="dc-footer">
+      DaCauldron · Alchemist lab interface · Connect your wallet to interact with the contract.
+    </footer>
+  </div>
+
+  <script>
+    (function() {
+      const STORAGE_KEY = "dacauldron_settings";
+      let CONTRACT_ADDRESS = "";
+      const CRUCIBLE = "0xE8f2A4C6b1D9e3F7a0B5c8E2d4F6A9b1C3e5D7";
+      const TREASURY = "0x9C1e5F3a7B0d2E6f8A4c1B7e9D3F5a0C2E6b8";
