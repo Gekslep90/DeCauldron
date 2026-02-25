@@ -218,3 +218,58 @@
     }
     .dc-hero h1 {
       font-size: 1.5rem;
+      color: var(--cauldron-text);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+    .dc-hero p {
+      font-size: 0.9rem;
+      color: var(--cauldron-muted);
+      margin-top: 0.5rem;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .dc-stat {
+      text-align: center;
+      padding: 0.75rem;
+    }
+    .dc-stat-value {
+      font-family: var(--cauldron-mono);
+      font-size: 1.25rem;
+      color: var(--cauldron-amber);
+    }
+    .dc-stat-label {
+      font-size: 0.7rem;
+      color: var(--cauldron-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 0.25rem;
+    }
+    .dc-cauldron-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 0.75rem;
+      background: radial-gradient(circle, var(--cauldron-amber) 0%, transparent 70%);
+      border-radius: 50%;
+      opacity: 0.6;
+    }
+    .dc-table-wrap { overflow-x: auto; margin: 0.75rem 0; }
+    .dc-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--cauldron-mono);
+      font-size: 0.78rem;
+    }
+    .dc-table th, .dc-table td {
+      padding: 0.5rem 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid var(--cauldron-border);
+    }
+    .dc-table th {
+      color: var(--cauldron-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 500;
+    }
+    .dc-table tr:hover td { background: rgba(45, 53, 38, 0.4); }
