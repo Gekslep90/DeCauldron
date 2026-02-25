@@ -713,3 +713,58 @@
         for (i = 0; i < 32; i++) {
           h = ((h << 5) - h) + (i + str.length) | 0;
           bytes[i] = (h >>> (i % 24)) & 0xff;
+        }
+        return "0x" + Array.from(bytes).map(function(b) { return ("0" + b.toString(16)).slice(-2); }).join("");
+      }
+
+      function formulaHashFromString(s) {
+        let i = 0, h = 0; const bytes = new Uint8Array(32);
+        for (i = 0; i < s.length; i++) h = ((h << 5) - h) + s.charCodeAt(i) | 0;
+        for (i = 0; i < 32; i++) {
+          h = ((h << 5) - h) + (i + s.length + 1) | 0;
+          bytes[i] = (h >>> (i % 24)) & 0xff;
+        }
+        return "0x" + Array.from(bytes).map(function(b) { return ("0" + b.toString(16)).slice(-2); }).join("");
+      }
+
+      function runCalculator() {
+        const reagentStr = document.getElementById("calcReagent").value.trim();
+        const yieldBpsStr = document.getElementById("calcYieldBps").value.trim();
+        const feeBpsStr = document.getElementById("calcFeeBps").value.trim();
+        const resultEl = document.getElementById("calcResult");
+        const reagent = parseInt(reagentStr, 10);
+        const yieldBps = parseInt(yieldBpsStr, 10);
+        const feeBps = parseInt(feeBpsStr, 10);
+        if (isNaN(reagent) || reagent < 0) {
+          resultEl.textContent = "Invalid reagent.";
+          return;
+        }
+        if (isNaN(yieldBps) || yieldBps < MIN_YIELD_BPS || yieldBps > MAX_YIELD_BPS) {
+          resultEl.textContent = "Yield bps must be " + MIN_YIELD_BPS + "–" + MAX_YIELD_BPS + ".";
+          return;
+        }
+        if (isNaN(feeBps) || feeBps < 0 || feeBps > MAX_FEE_BPS) {
+          resultEl.textContent = "Fee bps must be 0–" + MAX_FEE_BPS + ".";
+          return;
+        }
+        const yieldWei = Math.floor((reagent * yieldBps) / BPS_BASE);
+        const feeWei = Math.floor((yieldWei * feeBps) / BPS_BASE);
+        const netWei = yieldWei - feeWei;
+        resultEl.textContent = "Yield: " + yieldWei + " wei · Fee: " + feeWei + " wei · Net to beneficiary: " + netWei + " wei";
+      }
+
+      function buildMockEvents() {
+        const events = [
+          { name: "RecipeInscribed", data: "recipeId=1 formulaHash=0x… minReagentWei=1000000 yieldBps=8000" },
+          { name: "ReagentDeposited", data: "depositor=0x… vesselId=0x… amountWei=5000000" },
+          { name: "TransmutationResolved", data: "transmuteId=0x… beneficiary=0x… recipeId=1 reagentWei=1000000 yieldWei=800000 feeWei=640" },
+          { name: "FeeBpsUpdated", data: "previousBps=10 newBps=8" },
+          { name: "LabPauseToggled", data: "paused=false" },
+        ];
+        const logEl = document.getElementById("dcEventLog");
+        if (!logEl) return;
+        logEl.innerHTML = events.map(function(ev) {
+          return "<div class=\"evt-entry\"><span class=\"evt-name\">" + ev.name + "</span> <span class=\"evt-data\">" + ev.data + "</span></div>";
+        }).join("");
+      }
+
