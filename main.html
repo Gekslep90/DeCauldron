@@ -823,3 +823,56 @@
             return;
           }
           if (beneficiary.length !== 42 || !beneficiary.startsWith("0x")) {
+            showMsg("Beneficiary must be a valid 0x-prefixed 40-char address.", "err");
+            return;
+          }
+          showMsg("Resolve would call resolveTransmutation(beneficiary, vessel, recipe " + recipeId + ", " + reagentWei + "). Keeper only.", "info");
+        });
+      }
+
+      function vesselLookupHandler() {
+        document.getElementById("btnLookupVessel").addEventListener("click", function() {
+          const raw = document.getElementById("vesselLookupId").value.trim();
+          const resultEl = document.getElementById("vesselLookupResult");
+          if (!raw) {
+            resultEl.textContent = "Enter vessel name or bytes32 hex.";
+            return;
+          }
+          const vId = vesselIdFromString(raw);
+          resultEl.innerHTML = "Vessel ID (bytes32): <br /><code style='word-break:break-all'>" + vId + "</code>";
+        });
+      }
+
+      function calculatorHandler() {
+        document.getElementById("btnCalc").addEventListener("click", runCalculator);
+        document.getElementById("calcReagent").addEventListener("keypress", function(e) { if (e.key === "Enter") runCalculator(); });
+        document.getElementById("calcYieldBps").addEventListener("keypress", function(e) { if (e.key === "Enter") runCalculator(); });
+        document.getElementById("calcFeeBps").addEventListener("keypress", function(e) { if (e.key === "Enter") runCalculator(); });
+      }
+
+      function settingsHandlers() {
+        document.getElementById("btnSaveSettings").addEventListener("click", saveSettings);
+      }
+
+      function eventLogHandler() {
+        buildMockEvents();
+        document.getElementById("btnRefreshEvents").addEventListener("click", buildMockEvents);
+      }
+
+      loadSettings();
+      tabs();
+      connectBtn();
+      setDashboardPlaceholders();
+      depositHandlers();
+      inscribeHandlers();
+      transmuteHandlers();
+      vesselLookupHandler();
+      calculatorHandler();
+      settingsHandlers();
+      eventLogHandler();
+      runCalculator();
+    })();
+  </script>
+</body>
+</html>
+
